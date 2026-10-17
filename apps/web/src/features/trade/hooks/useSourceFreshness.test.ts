@@ -149,7 +149,7 @@ describe("useSourceFreshness", () => {
     const { result, rerender } = renderHook(
       ({ symbol }: { symbol: string | undefined }) => useSourceFreshness(symbol),
       {
-        initialProps: { symbol: "BTC" as string | undefined },
+        initialProps: { symbol: "BTC" },
       },
     )
     expect(result.current).not.toBeNull()

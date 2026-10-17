@@ -1,9 +1,11 @@
-import { cn } from "@workspace/ui/lib/utils"
-import {  useOrderBook } from "../../hooks/useOrderBook"
-import type {OrderBookLevel} from "../../hooks/useOrderBook";
-import { formatUsd } from "@/shared/lib/format"
-import { useRecentTrades } from "../../hooks/useRecentTrades"
 import { useState } from "react"
+
+import { cn } from "@workspace/ui/lib/utils"
+import { formatUsd } from "@/shared/lib/format"
+
+import { useOrderBook } from "../../hooks/useOrderBook"
+import { useRecentTrades } from "../../hooks/useRecentTrades"
+import type { OrderBookLevel } from "../../hooks/useOrderBook"
 
 type Props = {
   symbol: string | undefined
@@ -217,9 +219,9 @@ export function DepthLadder({ symbol, compact = false }: Props) {
   const { trades } = useRecentTrades(symbol)
 
   // OB-054: Determine reference price — prefer last trade, fall back to mid price
-  const lastTradePrice = trades[0]?.price ?? null
+  const lastTradePrice = trades[0]?.price
   const referencePrice = lastTradePrice ?? midPrice
-  const referencePriceLabel = lastTradePrice !== null ? "Last" : midPrice !== null ? "Mid" : "Mark"
+  const referencePriceLabel = lastTradePrice ? "Last" : midPrice ? "Mid" : "Mark"
 
   // OB-056: Cumulative depth inspection state
   const [hoveredLevel, setHoveredLevel] = useState<{ level: OrderBookLevel; side: "bid" | "ask" } | null>(null)

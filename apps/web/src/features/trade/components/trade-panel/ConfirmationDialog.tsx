@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, useRef } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import {
   Dialog,
   DialogContent,
@@ -132,8 +132,8 @@ export function ConfirmationDialog({
       sizeUsd,
       entryPrice,
       leverage,
-      triggerPrice: triggerPrice ?? "",
-      collateralAmount: fromAmount ?? "",
+      triggerPrice,
+      collateralAmount: fromAmount,
     }
 
     if (!inputSnapshotRef.current) {
